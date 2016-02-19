@@ -2,12 +2,34 @@
   <title>Upwords Solver</title>
 </head>
 <body>
-  <h1>Upwords Solver</h1>
-  
-  {{> wordLookupForm }}
-  {{> wordResults }}
+	<h1>Upwords Solver</h1>
+
+	{{> wordLookupForm }}
+	{{> wordResults }}
 
 </body>
 
 <template name="wordLookupForm">
 	<div class="well">
+		<div>
+			<label>User Letters</label>
+			<input type="text" id='userLetters'/>		
+		</div>
+		<div>
+			<label>Board Letters</label>
+			<input type="text" id='boardLetters'/>		
+		</div>
+		<button id=search>Search</button>
+	</div>
+</template>
+
+<template name="wordResults">
+	<div class="well">
+		<h3>Possible Words</h3>		
+		<ul>
+		{{#each words}}
+			<li>{{ word }}</li>
+		{{/each}}
+		</ul>
+	</div>
+</template>
