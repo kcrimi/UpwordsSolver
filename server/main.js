@@ -1,5 +1,5 @@
 
-if (process.env.ENVIRONMENT != "PRODUCTION" && Words.find().count() === 0) {
+if (Words.find().count() === 0) {
 	console.log("Importing base word list to db")
 	var data = Assets.getText("TWL06.txt")
 	var lines = data.split(/\r\n|\n/);
