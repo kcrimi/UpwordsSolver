@@ -6,7 +6,6 @@ Template.wordResults.helpers({
 
 Template.wordLookupForm.events({
 	'click button': function(e, t){
-
 		var userLetters = $('#userLetters').val().toUpperCase().split('');
 		var boardLetters = $('#boardLetters').val().toUpperCase().split('');
 		var possibleWords = [];
