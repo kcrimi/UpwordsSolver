@@ -11,25 +11,29 @@
 
 <template name="wordLookupForm">
 	<div class="well">
-		<div>
-			<label>User Letters</label>
-			<input type="text" id='userLetters'/>		
-		</div>
-		<div>
-			<label>Board Letters</label>
-			<input type="text" id='boardLetters'/>		
-		</div>
-		<button id=search>Search</button>
+			<div>
+				<label>User Letters</label>
+				<input type="text" id='userLetters'/>
+			</div>
+			<div>
+				<label>Board Letters</label>
+				<input type="text" id='boardLetters'/>
+			</div>
+			<button id=search>Search</button>
 	</div>
 </template>
 
 <template name="wordResults">
 	<div class="well">
-		<h3>Possible Words</h3>		
+		<h3>Possible Words</h3>
+		{{#if error}}
+		<p> {{ error }}</p>
+		{{else}}
 		<ul>
-		{{#each words}}
+		{{#each words }}
 			<li>{{ word }}</li>
 		{{/each}}
 		</ul>
+		{{/if}}
 	</div>
 </template>

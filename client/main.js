@@ -1,8 +1,6 @@
-Meteor.subscribe('possibleWords');
-
 Template.wordResults.helpers({
 	words: function() {
-		return Words.find({}, {sort: {length: -1}})
+		return Session.get('words');
 	}
 })
 
@@ -18,7 +16,19 @@ Template.wordLookupForm.events({
 		}
 
 		var uniquePossibleWords = deDupe(_.flatten(possibleWords));
-		Meteor.call('checkWords', uniquePossibleWords);
+		console.log("clicked button");
+		Meteor.call('checkWords', uniquePossibleWords,
+			function(error, result){
+				console.log("inside callback");
+				if (false) {
+					errorMessage = "Error getting words";
+					console.log("error is "+errorMessage);
+				} else {
+					console.log(result);
+					Session.set("words", result)
+				}
+			}
+		);
 	}
 })
 

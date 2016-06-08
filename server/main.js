@@ -1,4 +1,3 @@
-var possibleWords = [];
 
 if (Words.find().count() === 0) {
 	console.log("Importing base word list to db")
@@ -17,10 +16,6 @@ if (Words.find().count() === 0) {
 	console.log("end import")
 }
 
-Meteor.publish('possibleWords', function publishFunction() {
-	return Words.find({word: {$in: possibleWords}});
-});
-
 
 Meteor.methods({
 	// 'searchLetters': function(userLetters, boardLetters){
@@ -34,6 +29,7 @@ Meteor.methods({
 	// },
 
 	'checkWords': function(possibleWordArray){
-		possibleWords = possibleWordArray;
+		return Words.find({word: {$in: possibleWordArray}},{sort: {length: -1}}).fetch();
 	}
+
 })
